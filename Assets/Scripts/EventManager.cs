@@ -14,7 +14,9 @@ public class EventManager : MonoBehaviour
     public static event RecState StopRec;
 
     [SerializeField]
-    float yThreshHold = -0.03f;
+    float yLowerThresHold = -0.02f;
+    [SerializeField]
+    float yUpperThreshold = -0.005f;
     bool recordInputs = false;
 
     // Update is called once per frame
@@ -51,7 +53,7 @@ public class EventManager : MonoBehaviour
 
     public bool Flat()
     {
-        if (Input.acceleration.y >= yThreshHold)
+        if (Input.acceleration.y >= yLowerThresHold && Input.acceleration.y <= yUpperThreshold)
         {
             return true;
         }
